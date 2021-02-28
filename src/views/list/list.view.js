@@ -9,7 +9,6 @@ import _Loader from 'content/scrapper/_loader.content'
 
 import Notifications from 'components/notifications/parentNotification/parentNotification.component'
 import Gutter from 'components/gutters/gutter/gutter.component'
-import BasicTable from 'components/tables/basicTable/basicTable.component'
 
 import ListSubheader from '@material-ui/core/ListSubheader'
 import List from '@material-ui/core/List'
@@ -22,18 +21,7 @@ import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 
 import { fetchAllUrl } from 'redux/actions/scrapper.action'
-import { getUrlsScrapperSelector, getAllScrapperSelector } from 'redux/selectors/scrapper.selector'
-
-import { scrapperTable } from 'constants/tableAccessors/scrapper.constant'
-
-const _BasicTable = () => {
-  const urls = useSelector(getUrlsScrapperSelector)
-
-  return (
-    <BasicTable data={urls} accessors={scrapperTable}></BasicTable>
-
-  )
-}
+import { getAllScrapperSelector } from 'redux/selectors/scrapper.selector'
 
 const _section = ({ baseUrl, urls }) => {
   const [open, setOpen] = React.useState(false)
@@ -69,9 +57,6 @@ const ScrapperView = () => {
   const theme = useTheme()
   const dispatch = useDispatch()
 
-  //   const [open, setOpen] = React.useState(false)
-  //   const handleClick = () => setOpen(!open)
-
   const urls = useSelector(getAllScrapperSelector)
 
   useEffect(() => {
@@ -99,8 +84,8 @@ const ScrapperView = () => {
         >
           {
             urls.map(el => (
-              _section(el)
-
+              <_section key={el.baseUrl} baseUrl={el.baseUrl} urls={el.urls}></_section>
+            //   _section(el)
             ))
           }
         </List>
