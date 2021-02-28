@@ -1,0 +1,41 @@
+version: "3.5"
+services:
+  frontend:
+    env_file:
+      - .env
+    build: .
+    networks:
+      - ennergix
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - auth-service
+      - scrapper-service
+    restart: always
+
+  auth-service:
+    env_file:
+      - .env.auth
+    image: alexisdoker/auth
+    ports:
+      - "7020:7020"
+    restart: always
+    networks:
+      - ennergix
+
+  scrapper-service:
+    env_file:
+      - .env.scrapper
+    image: alexisdoker/scrapper
+    ports:
+      - "7010:7010"
+    restart: always
+    networks:
+      - ennergix
+
+networks:
+  ennergix:
+    name: ennergix
