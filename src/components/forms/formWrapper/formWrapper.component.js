@@ -10,8 +10,6 @@ const defaultFormWrapperStyles = {
 }
 
 const FormWrapper = forwardRef(({ children, styles, ...props }, ref) => {
-  console.info('FormWrapper component rendered')
-
   return (
     <Box {...defaultFormWrapperStyles} {...styles} ref={ref}>
       <form noValidate {...props}>

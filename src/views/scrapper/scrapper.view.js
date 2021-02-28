@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector, shallowEqual, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useTheme } from '@material-ui/core/styles'
 
 import MainLayout from 'layouts/main/main.layout'

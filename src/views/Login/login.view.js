@@ -6,8 +6,6 @@ import PlainLayout from 'layouts/plain/plain.layout'
 import LoginContent from 'content/Login/login.content'
 
 const LoginView = props => {
-  console.info('VIEW login rendered')
-
   return (
     <div id="view">
       <PlainLayout centered>

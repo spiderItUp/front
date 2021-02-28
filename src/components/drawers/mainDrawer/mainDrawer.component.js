@@ -16,7 +16,7 @@ import MailIcon from '@material-ui/icons/Mail'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 
-import Divider from 'components/gutters/divider/divider.component'
+import Divider from '@material-ui/core/Divider'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,9 +68,9 @@ const List1 = () => {
             <ListItemIcon>
               <MailIcon />
             </ListItemIcon>
-            <ListItemText primary="search" />
+            <ListItemText primary="scrapper" />
           </ListItem>
-          <ListItem button className={css.nested}>
+          <ListItem button className={css.nested} to={paths.list} component={Link}>
             <ListItemIcon>
               <MailIcon />
             </ListItemIcon>

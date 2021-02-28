@@ -7,7 +7,8 @@ import Toolbar from '@material-ui/core/Toolbar'
 
 import MainHeader from 'components/headers/mainHeader/mainHeader.component'
 import MainDrawer from 'components/drawers/mainDrawer/mainDrawer.component'
-import Divider from 'components/gutters/divider/divider.component'
+import Divider from '@material-ui/core/Divider'
+
 import { array, object } from 'yup/lib/locale'
 
 const useStyles = makeStyles((theme) => ({

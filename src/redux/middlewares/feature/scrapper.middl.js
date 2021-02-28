@@ -1,7 +1,7 @@
-import { FETCH_URL_STATUS, FETCH_URL_STATUS_SUCCESS, FETCH_URL_STATUS_ERROR } from 'redux/types'
+import { FETCH_URL_STATUS, FETCH_URL_STATUS_SUCCESS, FETCH_URL_STATUS_ERROR, FETCH_ALL_URL, FETCH_ALL_URL_SUCCESS } from 'redux/types'
 import { apiRequest } from 'redux/actions/api.action'
-import { setUrlStatus } from 'redux/actions/scrapper.action'
-import { showSpinner, hideSpinner, hideModal } from 'redux/actions/ui.action'
+import { setUrlStatus, setAllUrl } from 'redux/actions/scrapper.action'
+import { showSpinner, hideSpinner } from 'redux/actions/ui.action'
 import { pushNotification } from 'redux/actions/notification.action'
 
 import { severity } from 'constants/notifications.constant'
@@ -22,15 +22,31 @@ const scrapperMiddl = () => (next) => (action) => {
     ])
     break
 
+  case FETCH_ALL_URL:
+    next([
+      showSpinner(),
+      apiRequest({
+        fn: ScrapperService.fetchAllUrl,
+        onSuccess: FETCH_ALL_URL_SUCCESS,
+        onError: FETCH_URL_STATUS_ERROR
+      })
+    ])
+    break
+
   case FETCH_URL_STATUS_SUCCESS:
-    console.log(action)
     next([
       setUrlStatus({ payload: action.payload.data }),
       hideSpinner(),
       pushNotification({ message: 'success', severity: severity.success })
-
     ])
+    break
 
+  case FETCH_ALL_URL_SUCCESS:
+    next([
+      setAllUrl({ payload: action.payload.data }),
+      hideSpinner(),
+      pushNotification({ message: 'success', severity: severity.success })
+    ])
     break
 
   case FETCH_URL_STATUS_ERROR:

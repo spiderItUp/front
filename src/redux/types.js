@@ -8,8 +8,11 @@ export const LOGOUT = '[auth] logout'
 // SCRAPPER
 export const FETCH_URL_STATUS = '[scrapper] fetch status'
 export const SET_URL_STATUS = '[scrapper] set status'
-
 export const FETCH_URL_STATUS_SUCCESS = '[scrapper] fetch status success'
+
+export const FETCH_ALL_URL = '[list] fetch all url'
+export const SET_ALL_URL = '[list] set all url'
+export const FETCH_ALL_URL_SUCCESS = '[list] fetch all url success'
 
 export const FETCH_URL_STATUS_ERROR = '[scrapper] fetch status Error'
 

@@ -12,8 +12,6 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
 const BasicTable = ({ data, accessors }) => {
-  console.info('basicTable component rendered')
-
   return (
     <TableContainer component={Paper} elevation={0}>
       <Table /* className={classes.table} */ aria-label="engagement table">
